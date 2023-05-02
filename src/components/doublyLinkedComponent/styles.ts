@@ -55,7 +55,7 @@ export const Cell = styled.div<cellProp>`
 `
 
 const animate = keyframes`
-  0% {opacity: 0; ransform: rotate(45deg) translate(-20px, -20px);}
+  0% {opacity: 0; transform: rotate(45deg) translate(-20px, -20px);}
   50% {opacity: 1;}
   100% {opacity: 0; transform: rotate(45deg) translate(40px, 40px);}
 `
@@ -74,14 +74,12 @@ export const Arrow = styled.div<arrowProp>`
   transform: translate(-50%, -50%);
   transform: rotate(${({rot}) => rot});
   
-  background-color: red;
-  
   margin-top: ${({ rot }) => (rot == "90deg") ? "20px" : "0px"};
   margin-left: ${({ rot }) => (rot == "90deg") ? "40px" : "-10px"};
   margin-right: ${({ rot }) => (rot == "90deg") ? "0px" : "40px"};
 
+
   span{
-    border-color: black;
     display: block;
     width: 5px;
     aspect-ratio: 1/1;

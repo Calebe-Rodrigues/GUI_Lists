@@ -53,7 +53,7 @@ export const Cell = styled.div<cellProp>`
 `
 
 const animate = keyframes`
-  0% {opacity: 0; ransform: rotate(45deg) translate(-20px, -20px);}
+  0% {opacity: 0; transform: rotate(45deg) translate(-20px, -20px);}
   50% {opacity: 1;}
   100% {opacity: 0; transform: rotate(45deg) translate(20px, 20px);}
 `
@@ -68,15 +68,13 @@ export const Arrow = styled.div<arrowProp>`
   left: 50%;
   transform: translate(-50%, -50%);
   transform: rotate(270deg);
-  background-color: red;
   
-  margin-left: 25px;
+  margin-left: 40px;
   margin-right: 40px;
-  margin-bottom: 20px;
+  margin-bottom: 25px;
   
 
   span{
-    border-color: black;
     display: block;
     width: auto;
     aspect-ratio: 1/1;
