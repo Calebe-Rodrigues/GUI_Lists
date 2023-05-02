@@ -12,7 +12,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.TARCT_HOST }}
-          username: ${{ secrets.TARCT_USERNAME }}
+          username: ${{ secrets.TARCT_USER }}
           key: ${{ secrets.TARCT_KEY }}
           command_timeout: 45m
           script: |
