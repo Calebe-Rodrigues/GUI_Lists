@@ -11,7 +11,10 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
   const [at, setAt] = useState('');
   const [remove, setRemove] = useState('');
   const [select, setSelect] = useState('number');
+  const [select2, setSelect2] = useState('number');
   const [find, setFind] = useState('');
+  const [got, setGot] = useState('');
+  const [label, setLabel] = useState('Index: ');
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -76,6 +79,30 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
 
   }
 
+  function Find(event: FormEvent<HTMLFormElement>){
+    event.preventDefault();
+    let numero = parseInt(find);
+
+    if (select2 == 'number'){
+      setLabel('Index: ');
+      if(lista.includes(numero))
+      setGot(lista.indexOf(numero).toString());
+      else
+        console.log("Numero inválido");
+        setGot('');
+    }
+    else{
+      setLabel('Number: ');
+
+      if(numero>=lista.length || Number.isNaN(numero)){
+        console.log("Indice Inválido");
+        setGot('');
+      }
+      else
+        setGot(lista[numero].toString());
+    }
+
+  }
 
 
   return (
@@ -125,8 +152,8 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
         </CommandBox>
         <CommandBox>
           <h2>Consultar</h2>
-          <form >
-            <OptionBox value={select} onChange={(e) => setSelect(e.target.value)}>
+          <form onSubmit={Find}>
+            <OptionBox value={select2} onChange={(e) => setSelect2(e.target.value)}>
               <option value="number">Number</option>
               <option value="index">Index</option>
             </OptionBox>
@@ -136,6 +163,9 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
               onChange={(e) => setFind(e.target.value)}
             />
             <Ball>Find</Ball>
+            
+            <label>{label}</label>
+            <TextBox type="text" value={got}/>
           </form>
         </CommandBox>
 

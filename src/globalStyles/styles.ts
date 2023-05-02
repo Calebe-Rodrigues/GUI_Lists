@@ -56,6 +56,7 @@ export const Ball = styled.button`
   }
 
   margin: auto;
+  margin-right: 12px;
   padding: 8px;
   //margin: 50%;
 
