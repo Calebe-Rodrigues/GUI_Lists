@@ -17,6 +17,7 @@ jobs:
           command_timeout: 45m
           script: |
             cd Code/GUI_Lists
+            touch 'oi.txt'
             echo "Updating branch ${{ env.BRANCH_NAME }}"
             
             git pull
