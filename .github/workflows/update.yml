@@ -1,0 +1,23 @@
+name: Pull repo on host
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  update-repo:
+    name: Update repo
+    runs-on: ubuntu-latest
+    steps:
+      - name: Log into host
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.TARCT_HOST }}
+          username: ${{ secrets.TARCT_USERNAME }}
+          key: ${{ secrets.TARCT_KEY }}
+          command_timeout: 45m
+          script: |
+            cd Code/GUI_Lists
+            echo "Updating branch ${{ env.BRANCH_NAME }}"
+            
+            git pull
+            
