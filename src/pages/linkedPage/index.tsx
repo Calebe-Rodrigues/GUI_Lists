@@ -12,6 +12,10 @@ export function LinkedPage({lista}: {lista: Linked}) {
   const [at, setAt] = useState('')
   const [remove, setRemove] = useState('')
   const [select, setSelect] = useState('number')
+  const [select2, setSelect2] = useState('number');
+  const [find, setFind] = useState('');
+  const [got, setGot] = useState('');
+  const [label, setLabel] = useState('Index: ');
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -76,7 +80,32 @@ export function LinkedPage({lista}: {lista: Linked}) {
 
   }
 
+  function Find(event: FormEvent<HTMLFormElement>){
+    event.preventDefault();
+    let numero = parseInt(find);
 
+    if (select2 == 'number'){
+      setLabel('Index: ');
+
+      if(lista.indexOf(numero) != -1 )
+      setGot(lista.indexOf(numero).toString());
+      else{
+        console.log("Numero inválido");
+        setGot('');
+      }
+    }
+    else{
+      setLabel('Number: ');
+
+      if(numero>=lista.size || Number.isNaN(numero)){
+        console.log("Indice Inválido");
+        setGot('');
+      }
+      else
+        setGot(lista.getElement(numero).toString());
+    }
+
+  }
 
   return (
     <PageBox> 
@@ -125,7 +154,24 @@ export function LinkedPage({lista}: {lista: Linked}) {
               Remove
             </Ball>
           </form>
-          
+        </CommandBox>
+        <CommandBox>
+          <h2>Consultar</h2>
+          <form onSubmit={Find}>
+            <OptionBox value={select2} onChange={(e) => setSelect2(e.target.value)}>
+              <option value="number">Number</option>
+              <option value="index">Index</option>
+            </OptionBox>
+            <TextBox
+              type="text"
+              value={find}
+              onChange={(e) => setFind(e.target.value)}
+            />
+            <Ball>Find</Ball>
+            
+            <label>{label}</label>
+            <TextBox type="text" value={got}/>
+          </form>
         </CommandBox>
 
       </MenuBox>

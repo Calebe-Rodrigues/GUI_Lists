@@ -87,9 +87,10 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
       setLabel('Index: ');
       if(lista.includes(numero))
       setGot(lista.indexOf(numero).toString());
-      else
+      else{
         console.log("Numero inválido");
         setGot('');
+      }
     }
     else{
       setLabel('Number: ');
