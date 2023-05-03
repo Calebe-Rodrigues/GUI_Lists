@@ -3,12 +3,15 @@ import { Cell, Container, Indice, CellBox, Arrow, CellCell} from "./styles";
 import { DoublyLinked } from "../../classes/doublyLinked";
 
 
-export function DoublyLinkedComponent({lista, tam}: {lista: DoublyLinked, tam:number}) {
+export function DoublyLinkedComponent({lista, tam, newItem}: {lista: DoublyLinked, tam:number, newItem:number}) {
   let cells = []
+  let isNew = false;
   for (let i=0; i<tam; i++){
+    (newItem == i)? isNew = true: isNew = false;
+
     cells.push(
       <>
-        <CellBox>
+        <CellBox isNew={isNew}>
           <CellCell>
             <Cell>
               {"<"}

@@ -16,6 +16,7 @@ export function DoublyLinkedPage({lista}: {lista: DoublyLinked}) {
   const [find, setFind] = useState('');
   const [got, setGot] = useState('');
   const [label, setLabel] = useState('Index: ');
+  const [newItem, setNewItem] = useState(NaN);
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -33,6 +34,7 @@ export function DoublyLinkedPage({lista}: {lista: DoublyLinked}) {
         console.log("Número Invalido");
       }
       else{
+        setNewItem(lista.size);
         lista.add(numero);
         setL(lista);
         setT(t+1);
@@ -43,6 +45,8 @@ export function DoublyLinkedPage({lista}: {lista: DoublyLinked}) {
         console.log("Número Invalido");
       }
       else{
+        setNewItem(index);
+        setAt('');
         lista.insertAt(numero, index);
         setL(lista);
         setT(t+1);
@@ -172,13 +176,13 @@ export function DoublyLinkedPage({lista}: {lista: DoublyLinked}) {
             <Ball>Find</Ball>
             
             <label>{label}</label>
-            <TextBox type="text" value={got}/>
+            <TextBox type="text" value={got} readOnly/>
           </form>
         </CommandBox>
 
       </MenuBox>
       <div>
-        <DoublyLinkedComponent lista={l} tam={t}/>
+        <DoublyLinkedComponent lista={l} tam={t} newItem={newItem}/>
       </div>
     </PageBox>
   )

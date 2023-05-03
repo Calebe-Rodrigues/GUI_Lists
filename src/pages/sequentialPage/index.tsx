@@ -15,6 +15,7 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
   const [find, setFind] = useState('');
   const [got, setGot] = useState('');
   const [label, setLabel] = useState('Index: ');
+  const [newItem, setNewItem] = useState(NaN);
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -32,6 +33,7 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
         console.log("Número Invalido");
       }
       else{
+        setNewItem(lista.length);
         lista.push(numero);
         setL(lista);
         setT(t+1);
@@ -41,7 +43,9 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
       if(Number.isNaN(numero)){
         console.log("Número Invalido");
       }
-      else{
+      else{ 
+        setNewItem(index);
+        setAt('');
         lista.splice(index, 0, numero);
         setL(lista);
         setT(t+1);
@@ -166,13 +170,13 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
             <Ball>Find</Ball>
             
             <label>{label}</label>
-            <TextBox type="text" value={got}/>
+            <TextBox type="text" value={got} readOnly/>
           </form>
         </CommandBox>
 
       </MenuBox>
       <div>
-        <Sequential lista={l} tam={t}/>
+        <Sequential lista={l} tam={t} newItem={newItem}/>
       </div>
     </PageBox>
   )

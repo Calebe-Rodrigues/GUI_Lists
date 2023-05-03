@@ -16,6 +16,7 @@ export function LinkedPage({lista}: {lista: Linked}) {
   const [find, setFind] = useState('');
   const [got, setGot] = useState('');
   const [label, setLabel] = useState('Index: ');
+  const [newItem, setNewItem] = useState(NaN);
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -33,6 +34,7 @@ export function LinkedPage({lista}: {lista: Linked}) {
         console.log("Número Invalido");
       }
       else{
+        setNewItem(lista.size);
         lista.add(numero);
         setL(lista);
         setT(t+1);
@@ -42,7 +44,9 @@ export function LinkedPage({lista}: {lista: Linked}) {
       if(Number.isNaN(numero)){
         console.log("Número Invalido");
       }
-      else{
+      else{ 
+        setNewItem(index);
+        setAt('');
         lista.insertAt(numero, index);
         setL(lista);
         setT(t+1);
@@ -170,13 +174,13 @@ export function LinkedPage({lista}: {lista: Linked}) {
             <Ball>Find</Ball>
             
             <label>{label}</label>
-            <TextBox type="text" value={got}/>
+            <TextBox type="text" value={got} readOnly/>
           </form>
         </CommandBox>
 
       </MenuBox>
       <div>
-        <LinkedComponent lista={l} tam={t}/>
+        <LinkedComponent lista={l} tam={t} newItem={newItem}/>
       </div>
     </PageBox>
   )

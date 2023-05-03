@@ -3,12 +3,15 @@ import { Cell, Container, Indice, CellBox, Arrow, CellCell} from "./styles";
 import { Linked } from "../../classes/linked";
 
 
-export function LinkedComponent({lista, tam}: {lista: Linked, tam:number}) {
+export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:number, newItem:number}) {
   let cells = []
+  let isNew = false;
   for (let i=0; i<tam; i++){
+    (newItem == i)? isNew = true: isNew = false;
+
     cells.push(
       <>
-        <CellBox>
+        <CellBox isNew={isNew}>
           <CellCell>
             <Cell isContent={true}>
               {lista.getElement(i)}

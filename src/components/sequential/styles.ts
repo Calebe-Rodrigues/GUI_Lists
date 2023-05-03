@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {keyframes} from "styled-components";
 
 export const Indice = styled.div`
   padding: 3px;
@@ -12,9 +12,25 @@ export const Indice = styled.div`
   border-radius: 0px 0px 8px 8px ;
 
 `
-export const CellBox = styled.div`
+
+const animate = keyframes`
+  0% {filter: blur(100px)}
+  100% {filter: blur(0px)}
+`
+
+type CBProp = {
+  isNew?: boolean;
+}
+
+export const CellBox = styled.div<CBProp>`
   display: flex;
   flex-direction: column;
+
+  
+  animation-name: ${({isNew}) => isNew? animate : "none"};
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+
 `
 
 export const Container = styled.div`

@@ -12,9 +12,24 @@ export const Indice = styled.div`
   border-radius: 0px 0px 8px 8px ;
 
 `
-export const CellBox = styled.div`
+const animate = keyframes`
+  0% {filter: blur(100px)}
+  100% {filter: blur(0px)}
+`
+
+type CBProp = {
+  isNew?: boolean;
+}
+
+export const CellBox = styled.div<CBProp>`
   display: flex;
   flex-direction: column;
+
+  
+  animation-name: ${({isNew}) => isNew? animate : "none"};
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
+
 `
 
 export const Container = styled.div`
@@ -52,7 +67,7 @@ export const Cell = styled.div<cellProp>`
   }
 `
 
-const animate = keyframes`
+const animateArrow = keyframes`
   0% {opacity: 0; transform: rotate(45deg) translate(-20px, -20px);}
   50% {opacity: 1;}
   100% {opacity: 0; transform: rotate(45deg) translate(20px, 20px);}
@@ -82,7 +97,7 @@ export const Arrow = styled.div<arrowProp>`
     border-right: 5px solid white;
     transform: rotate(45deg);
     margin: -10px;
-    animation-name: ${animate};
+    animation-name: ${animateArrow};
     animation-duration: 1s;
     animation-iteration-count: infinite;
     
