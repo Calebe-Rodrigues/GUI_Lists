@@ -1,6 +1,6 @@
 import React, { FormEvent } from "react";
 import { CommandBox, Ball, TextBox, MenuBox, PageBox, OptionBox } from "../../globalStyles/styles"
-import { Sequential } from "../../components/sequential/index";
+import { Sequential, MAX_SIZE } from "../../components/sequential/index";
 import { useState } from "react";
 
 
@@ -23,9 +23,14 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
     let numero = parseInt(add);
     let index = parseInt(at);
 
+    if(t >= MAX_SIZE){
+      console.log("Tamanho máximo atingido");
+      return;
+    }
+
     if(index > t){
       console.log("Indice Invalido");
-      return
+      return;
     }
 
     if(Number.isNaN(index)){

@@ -24,7 +24,7 @@ export function LinkedPage({lista}: {lista: Linked}) {
     let numero = parseInt(add);
     let index = parseInt(at);
 
-    if(index>=t){
+    if(index>t){
       console.log("Indice Invalido");
       return
     }

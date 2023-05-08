@@ -24,7 +24,6 @@ type CBProp = {
 export const CellBox = styled.div<CBProp>`
   display: flex;
   flex-direction: column;
-
   
   animation-name: ${({isNew}) => isNew? animate : "none"};
   animation-duration: 0.5s;
