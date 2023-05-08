@@ -6,6 +6,7 @@ import { DoublyLinked } from "./classes/doublyLinked";
 
 
 function App() {
+  document.title = "Listas - Estruturas de Dados";
   let lista = new Linked();
   let listaD = new DoublyLinked();
   return (
