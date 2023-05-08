@@ -17,9 +17,15 @@ const animate = keyframes`
   0% {filter: blur(100px)}
   100% {filter: blur(0px)}
 `
+const toTheRight = keyframes`
+  0% {transform: translate(-40px, 0px)}
+  100% {transform: translate(0px, 0px)}
+`
 
 type CBProp = {
   isNew?: boolean;
+  isRight?: boolean;
+  delay?: number;
 }
 
 export const CellBox = styled.div<CBProp>`

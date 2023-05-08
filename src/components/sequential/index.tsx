@@ -7,6 +7,7 @@ export const MAX_SIZE = 10;
 export function Sequential({lista, tam, newItem}: {lista: Array<number>, tam:number, newItem:number}) {
   let cells = []
   let isNew = false;
+  let isRight = false;
   for (let i=0; i<MAX_SIZE; i++){
     (newItem === i)? isNew = true: isNew = false;
     
@@ -20,6 +21,8 @@ export function Sequential({lista, tam, newItem}: {lista: Array<number>, tam:num
         </Indice>
       </CellBox>
     )
+
+    if (isNew){isRight = true}
   }
   return (
     <Container>
