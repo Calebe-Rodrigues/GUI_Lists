@@ -6,6 +6,7 @@ import { Linked } from "../../classes/linked";
 export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:number, newItem:number}) {
   let cells = []
   let isNew = false;
+  let isHead = true;
   for (let i=0; i<tam; i++){
     (newItem == i)? isNew = true: isNew = false;
 
@@ -13,10 +14,10 @@ export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:numbe
       <>
         <CellBox isNew={isNew}>
           <CellCell>
-            <Cell isContent={true}>
+            <Cell isContent={true} isHead={isHead}>
               {lista.getElement(i)}
             </Cell>
-            <Cell>
+            <Cell isHead={isHead}>
               {">"}
             </Cell>
           </CellCell>
@@ -31,6 +32,8 @@ export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:numbe
         </Arrow>
       </>
     )
+
+    isHead = false;
   }
   return (
     <Container>

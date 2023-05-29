@@ -6,20 +6,22 @@ import { DoublyLinked } from "../../classes/doublyLinked";
 export function DoublyLinkedComponent({lista, tam, newItem}: {lista: DoublyLinked, tam:number, newItem:number}) {
   let cells = []
   let isNew = false;
+  let HoT = true;
   for (let i=0; i<tam; i++){
     (newItem == i)? isNew = true: isNew = false;
+    (i == 0 || i == tam-1)? HoT = true: HoT = false;
 
     cells.push(
       <>
         <CellBox isNew={isNew}>
           <CellCell>
-            <Cell>
+            <Cell HeadOrTail={HoT}>
               {"<"}
             </Cell>
-            <Cell isContent={true}>
+            <Cell isContent={true} HeadOrTail={HoT}>
               {lista.getElement(i)}
             </Cell>
-            <Cell>
+            <Cell HeadOrTail={HoT}>
               {">"}
             </Cell>
           </CellCell>

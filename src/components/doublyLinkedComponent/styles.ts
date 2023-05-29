@@ -32,23 +32,24 @@ export const CellBox = styled.div<CBProp>`
   animation-iteration-count: 1;
 
 `
-export const Container = styled.div`
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 0px;
-  flex-wrap: wrap
-`
-
 export const CellCell = styled.div`
   display: flex;
   flex-direction: row;
 
 `
 
+export const Container = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 0px;
+  flex-wrap: wrap;
+`
+
 
 type cellProp = {
   isContent?: boolean;
+  HeadOrTail?: boolean;
 }
 
 export const Cell = styled.div<cellProp>`
@@ -60,7 +61,11 @@ export const Cell = styled.div<cellProp>`
   border-radius: 4px 4px 0px 0px ;
 
 
-  background: ${({isContent}) => isContent? "#96f360": "#d5fabf"};
+  background: ${({isContent, HeadOrTail}) => 
+    isContent? 
+      (HeadOrTail? "#f0b051": "#96f360"): 
+      (HeadOrTail? "#fae2bf" : "#d5fabf")};
+
 
 
   &:hover{

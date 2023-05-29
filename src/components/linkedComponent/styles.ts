@@ -36,7 +36,7 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   gap: 0px;
-  flex-wrap: wrap
+  flex-wrap: wrap;
 `
 
 export const CellCell = styled.div`
@@ -44,9 +44,9 @@ export const CellCell = styled.div`
   flex-direction: row;
 
 `
-
 type cellProp = {
   isContent?: boolean;
+  isHead?: boolean;
 }
 
 export const Cell = styled.div<cellProp>`
@@ -57,9 +57,10 @@ export const Cell = styled.div<cellProp>`
 
   border-radius: 4px 4px 0px 0px ;
 
-
-  background: ${({isContent}) => isContent? "#96f360": "#d5fabf"};
-
+  background: ${({isContent, isHead}) => 
+    isContent? 
+      (isHead? "#f0b051": "#96f360"): 
+      (isHead? "#fae2bf" : "#d5fabf")};
 
   &:hover{
     box-shadow: inset 5px 4px 5px 3px rgba(0, 0, 0, 0.151);
