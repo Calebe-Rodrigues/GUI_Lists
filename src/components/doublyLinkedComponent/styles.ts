@@ -93,9 +93,9 @@ export const Arrow = styled.div<arrowProp>`
   transform: translate(-50%, -50%);
   transform: rotate(${({rot}) => rot});
   
-  margin-top: ${({ rot }) => (rot == "90deg") ? "20px" : "0px"};
-  margin-left: ${({ rot }) => (rot == "90deg") ? "40px" : "-10px"};
-  margin-right: ${({ rot }) => (rot == "90deg") ? "0px" : "40px"};
+  margin-top: ${({ rot }) => (rot === "90deg") ? "20px" : "0px"};
+  margin-left: ${({ rot }) => (rot === "90deg") ? "40px" : "-10px"};
+  margin-right: ${({ rot }) => (rot === "90deg") ? "0px" : "40px"};
 
 
   span{

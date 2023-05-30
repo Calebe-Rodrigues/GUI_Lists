@@ -63,7 +63,7 @@ export function LinkedPage({lista}: {lista: Linked}) {
       return
     }
 
-    if(select=='index'){
+    if(select==='index'){
       if(numero>=t){
         console.log("Indice Invalido");
         return
@@ -74,8 +74,8 @@ export function LinkedPage({lista}: {lista: Linked}) {
       setT(t-1);
     }
 
-    if(select=='number'){
-      if(lista.indexOf(numero) != -1){
+    if(select==='number'){
+      if(lista.indexOf(numero) !== -1){
         lista.removeElement(numero);
         setL(lista);
       setT(t-1);
@@ -88,10 +88,10 @@ export function LinkedPage({lista}: {lista: Linked}) {
     event.preventDefault();
     let numero = parseInt(find);
 
-    if (select2 == 'number'){
+    if (select2 === 'number'){
       setLabel('Index: ');
 
-      if(lista.indexOf(numero) != -1 )
+      if(lista.indexOf(numero) !== -1 )
       setGot(lista.indexOf(numero).toString());
       else{
         console.log("Numero inválido");

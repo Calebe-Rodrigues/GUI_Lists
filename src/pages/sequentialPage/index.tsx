@@ -67,7 +67,7 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
       return
     }
 
-    if(select=='index'){
+    if(select==='index'){
       if(numero>=t){
         console.log("Indice Invalido");
         return
@@ -78,7 +78,7 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
       setT(t-1);
     }
 
-    if(select=='number'){
+    if(select==='number'){
       if(lista.includes(numero)){
         lista.splice(lista.indexOf(numero), 1);
         setL(lista);
@@ -92,7 +92,7 @@ export function SequentialPage({lista}: {lista: Array<number>}) {
     event.preventDefault();
     let numero = parseInt(find);
 
-    if (select2 == 'number'){
+    if (select2 === 'number'){
       setLabel('Index: ');
       if(lista.includes(numero))
       setGot(lista.indexOf(numero).toString());

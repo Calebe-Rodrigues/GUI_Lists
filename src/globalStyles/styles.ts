@@ -17,9 +17,10 @@ export const PageBox = styled.div`
 `
 
 export const MenuBox = styled.div`
-  display: flexbox;
+  display: flex;
   flex-direction: row;
   padding: 8px;
+  margin-bottom: 50px;
 
 `
 

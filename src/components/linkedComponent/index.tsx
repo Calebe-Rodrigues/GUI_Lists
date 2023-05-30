@@ -8,7 +8,7 @@ export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:numbe
   let isNew = false;
   let isHead = true;
   for (let i=0; i<tam; i++){
-    (newItem == i)? isNew = true: isNew = false;
+    (newItem === i)? isNew = true: isNew = false;
 
     cells.push(
       <>
@@ -25,7 +25,7 @@ export function LinkedComponent({lista, tam, newItem}: {lista: Linked, tam:numbe
           {i}
         </Indice>
         </CellBox>
-        <Arrow disable = {i+1 == tam}>
+        <Arrow disable = {i+1 === tam}>
           <span/>
           <span/>
           <span/>

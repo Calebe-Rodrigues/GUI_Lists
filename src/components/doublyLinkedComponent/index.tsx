@@ -8,8 +8,8 @@ export function DoublyLinkedComponent({lista, tam, newItem}: {lista: DoublyLinke
   let isNew = false;
   let HoT = true;
   for (let i=0; i<tam; i++){
-    (newItem == i)? isNew = true: isNew = false;
-    (i == 0 || i == tam-1)? HoT = true: HoT = false;
+    (newItem === i)? isNew = true: isNew = false;
+    (i === 0 || i === tam-1)? HoT = true: HoT = false;
 
     cells.push(
       <>
@@ -30,12 +30,12 @@ export function DoublyLinkedComponent({lista, tam, newItem}: {lista: DoublyLinke
         </Indice>
         </CellBox>
         <CellBox>
-          <Arrow rot="90deg" disable = {i+1 == tam}>
+          <Arrow rot="90deg" disable = {i+1 === tam}>
             <span/>
             <span/>
             <span/>
           </Arrow>
-          <Arrow rot="270deg" disable = {i+1 == tam}>
+          <Arrow rot="270deg" disable = {i+1 === tam}>
             <span/>
             <span/>
             <span/>
