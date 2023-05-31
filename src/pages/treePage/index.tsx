@@ -44,7 +44,7 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
 
   function Find(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
-    setGot(arvore.root.data.toString());
+    setGot(arvore.findMinNode(arvore.getRootNode()).data.toString());
   }
 
   return (
@@ -81,7 +81,7 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
         </CommandBox>
 
         <CommandBox>
-          <h2>Consultar topo</h2>
+          <h2>Consultar menor valor</h2>
           <form onSubmit={Find}>
             <Ball>Find</Ball>
             <TextBox type="text" value={got} readOnly/>
