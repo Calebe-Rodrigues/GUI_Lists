@@ -28,7 +28,7 @@ export const CommandBox = styled.div`
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #0c0c0c34;
+  background-color: #b8b8b89c;
   padding: 5px;
   gap: 15px;
   flex-grow: 10;  

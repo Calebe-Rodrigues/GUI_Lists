@@ -47,6 +47,18 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
     setGot(arvore.findMinNode(arvore.getRootNode()).data.toString());
   }
 
+  function PreOrder(){
+    arvore.preorder(arvore.getRootNode());
+  }
+
+  function InOrder(){
+    arvore.inorder(arvore.getRootNode());
+  }
+
+  function PostOrder(){
+    arvore.postorder(arvore.getRootNode());
+  }
+
   return (
     <PageBox> 
       <h1>Árvore Binária de Pesquisa</h1>
@@ -81,11 +93,13 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
         </CommandBox>
 
         <CommandBox>
-          <h2>Consultar menor valor</h2>
-          <form onSubmit={Find}>
-            <Ball>Find</Ball>
-            <TextBox type="text" value={got} readOnly/>
+          <h2>Consultar</h2>
+          <form >
+            <Ball onClick={InOrder}>Pre</Ball>
+            <Ball onClick={PreOrder}>In</Ball>
+            <Ball onClick={PostOrder}>Post</Ball>
           </form>
+          
         </CommandBox>
 
       </MenuBox>
