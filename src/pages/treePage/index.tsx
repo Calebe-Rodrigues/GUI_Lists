@@ -94,11 +94,11 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
 
         <CommandBox>
           <h2>Consultar</h2>
-          <form >
+          <MenuBox >
             <Ball onClick={InOrder}>In</Ball>
             <Ball onClick={PreOrder}>Pre</Ball>
             <Ball onClick={PostOrder}>Post</Ball>
-          </form>
+          </MenuBox>
           
         </CommandBox>
 
