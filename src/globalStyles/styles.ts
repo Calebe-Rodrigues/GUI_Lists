@@ -16,6 +16,7 @@ export const PageBox = styled.div`
 
 `
 
+
 export const MenuBox = styled.div`
   display: flex;
   flex-direction: row;
