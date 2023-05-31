@@ -3,9 +3,6 @@ function Home(){
   return(
     <ul>
       <li>
-        <Link to="/">Home</Link>
-      </li>
-      <li>
         <Link to="/sequential">Lista Sequencial</Link>
       </li>
       <li>
@@ -19,6 +16,9 @@ function Home(){
       </li>
       <li>
         <Link to="/queue">Fila</Link>
+      </li>
+      <li>
+        <Link to="/tree">Árvore Binária de Pesquisa</Link>
       </li>
     </ul>
   )
