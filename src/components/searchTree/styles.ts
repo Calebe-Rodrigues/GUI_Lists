@@ -17,9 +17,15 @@ export const Camada = styled.div`
   background-color: aliceblue;
 
 `
+const animate = keyframes`
+  0% {background: #96f360; box-shadow: 0px 0px 10px 0px #96f360};
+  50% {background: #f73030; box-shadow: 0px 0px 10px 2px #f73030};
+  100% {background: #f16868; box-shadow: 0px 0px 10px 4px #f16868};
+`
 
 type NodeProp = {
   disabled?: boolean;
+  isConsultar?: boolean;
 }
 
 export const Node = styled.div<NodeProp>`
@@ -30,7 +36,13 @@ export const Node = styled.div<NodeProp>`
   min-width: 18px;
 
   border-radius: 50px;
-  background: #96f360;
+  background: ${({isConsultar}) => isConsultar? "#f36060" : "#96f360"};
+
+  box-shadow: ${({isConsultar}) => isConsultar? "0px 0px 10px 4px #f16868" : "none"};
+    
+  animation-name: ${({isConsultar}) => isConsultar? animate : "none"};
+  animation-duration: 0.5s;
+  animation-iteration-count: 1;
 
 
   opacity: ${({disabled}) => disabled? "0" : "1"};

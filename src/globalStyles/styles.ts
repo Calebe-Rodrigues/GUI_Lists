@@ -80,6 +80,17 @@ export const TextBox = styled.input`
 
   border-style: hidden;
 `
+export const TextResultBox = styled.input`
+  border-radius: 8px;
+  text-align: center;
+  padding: 8px;
+  font-size: 20px;
+  margin: 8px;
+  margin-right: 24px;
+  width: auto;
+
+  border-style: hidden;
+`
 export const OptionBox = styled.select`
   border-radius: 8px;
   text-align: center;

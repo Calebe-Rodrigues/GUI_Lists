@@ -2,7 +2,7 @@ import { Container, Camada, Node, GalhoContainer, Galho} from "./styles";
 import { BinarySearchTree } from "../../classes/SearchTree";
 
 
-export function Tree({arvore}: {arvore: BinarySearchTree}) {
+export function Tree({arvore, consultar}: {arvore: BinarySearchTree, consultar: Number}) {
   let camada0: any = []
   let camada1: any = []
   let camada2: any = []
@@ -16,6 +16,7 @@ export function Tree({arvore}: {arvore: BinarySearchTree}) {
   let temEsquerda = false;
   let temDireita = false;
   let rota = "30";
+  let isConsultar = false;
 
   while(fila.length > 1){
     if(camada >= 4) {
@@ -87,9 +88,11 @@ export function Tree({arvore}: {arvore: BinarySearchTree}) {
         fila.push("empty") 
       }
 
+      (fila[0].data === consultar)? isConsultar = true: isConsultar = false;
+
       camadas[camada].push(
         <Container>
-          <Node>
+          <Node isConsultar={isConsultar}>
             {fila[0].data}
           </Node>
           <GalhoContainer>

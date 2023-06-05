@@ -168,36 +168,43 @@ export class BinarySearchTree
   }
 
   // Performs inorder traversal of a tree
-  inorder(node)
+  inorder(node, result)
   {
+
     if(node !== null)
     {
-      this.inorder(node.left);
+      this.inorder(node.left, result);
+      result.push(node.data);
       console.log(node.data);
-      this.inorder(node.right);
+      this.inorder(node.right, result);
     }
+    return(result);
   }
 
   // Performs preorder traversal of a tree
-  preorder(node)
+  preorder(node, result)
   {
     if(node !== null)
     {
       console.log(node.data);
-      this.preorder(node.left);
-      this.preorder(node.right);
+      result.push(node.data);
+      this.preorder(node.left, result);
+      this.preorder(node.right, result);
     }
+    return(result);
   }
 	
   // Performs postorder traversal of a tree
-  postorder(node)
+  postorder(node, result)
   {
     if(node !== null)
     {
-      this.postorder(node.left);
-      this.postorder(node.right);
+      this.postorder(node.left, result);
+      this.postorder(node.right, result);
       console.log(node.data);
+      result.push(node.data);
     }
+    return(result);
   }
 
   // search for a node with given data

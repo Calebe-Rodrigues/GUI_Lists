@@ -1,5 +1,5 @@
 import React, { FormEvent } from "react";
-import { CommandBox, Ball, TextBox, MenuBox, PageBox} from "../../globalStyles/styles"
+import { CommandBox, Ball, TextBox, MenuBox, PageBox, TextResultBox} from "../../globalStyles/styles"
 import { Tree } from "../../components/searchTree";
 import { useState } from "react";
 import { BinarySearchTree } from "../../classes/SearchTree";
@@ -9,8 +9,10 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
   const [l, setL] = useState(arvore);
   const [add, setAdd] = useState('');
   const [remove, setRemove] = useState('');
-  const [got, setGot] = useState('');
+  const [got, setGot] = useState(NaN);
   const [newItem, setNewItem] = useState(0);
+  const [result, setResult] = useState([]);
+  const [find, setFind] = useState('');
 
   function Add(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
@@ -44,20 +46,36 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
 
   function Find(event: FormEvent<HTMLFormElement>){
     event.preventDefault();
-    setGot(arvore.findMinNode(arvore.getRootNode()).data.toString());
+
+    let numero = parseInt(find);
+
+    if(Number.isNaN(numero)){
+      console.log("Número Invalido");
+    }
+    else{
+      let folha = arvore.search(numero);
+      if(folha === null){
+        console.log("Número não existe na árvore.")
+      }
+      else{
+        setGot(numero);
+        setNewItem(newItem+1);
+      }
+    }
   }
 
   function PreOrder(){
-    arvore.preorder(arvore.getRootNode());
+    setResult(arvore.preorder(arvore.getRootNode(), []));    
   }
 
   function InOrder(){
-    arvore.inorder(arvore.getRootNode());
+    setResult(arvore.inorder(arvore.getRootNode(), []));
   }
 
   function PostOrder(){
-    arvore.postorder(arvore.getRootNode());
+    setResult(arvore.postorder(arvore.getRootNode(), []));
   }
+
 
   return (
     <PageBox> 
@@ -94,17 +112,36 @@ export function TreePage({arvore}: {arvore: BinarySearchTree}) {
 
         <CommandBox>
           <h2>Consultar</h2>
-          <MenuBox >
+          
+          <form onSubmit={Find}>
+            <TextBox
+              type="text"
+              value = {find}
+              onChange = {(e) => setFind(e.target.value)}
+            />
+            <Ball>
+              Find
+            </Ball>
+          </form>
+
+          <div >
             <Ball onClick={InOrder}>In</Ball>
             <Ball onClick={PreOrder}>Pre</Ball>
             <Ball onClick={PostOrder}>Post</Ball>
-          </MenuBox>
+          </div>
+          <div>
+            <TextResultBox
+              type="text"
+              value={result}
+              readOnly
+            />
+          </div>
           
         </CommandBox>
 
       </MenuBox>
       <div>
-        <Tree arvore={l}/>
+        <Tree arvore={l} consultar = {got}/>
       </div>
     </PageBox>
   )
